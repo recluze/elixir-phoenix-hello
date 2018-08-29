@@ -6,4 +6,8 @@
         Say hello to Frank! 
       </a>
     </p>
+
+    <p>
+    Also, we have this variable: <%= @var %>
+    </p>
 </div>

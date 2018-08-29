@@ -3,7 +3,7 @@ defmodule HelloWeb.HelloController do
 
   def index(conn, _params) do
     conn
-    |> put_flash(:info, "Welcome, welcome!")
+    |> assign(:var, "I am a string!")
     |> render("index.html")
   end
 
