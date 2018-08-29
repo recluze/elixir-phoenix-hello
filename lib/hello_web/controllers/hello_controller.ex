@@ -3,7 +3,6 @@ defmodule HelloWeb.HelloController do
 
   def index(conn, _params) do
     conn
-    |> put_resp_content_type("text/plain")
     |> assign(:var, "I am a string!")
     |> render("index.html")
   end
