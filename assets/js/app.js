@@ -18,4 +18,22 @@ import "phoenix_html"
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-// import socket from "./socket"
+import socket from "./socket"
+
+let channel             = socket.channel("room:lobby", {})
+let chatInput           = document.querySelector("#chat-input")
+let messagesContainer   = document.querySelector("#messages")
+
+chatInput.addEventListener("keypress", event => {
+    if(event.keyCode === 13){
+      channel.push("new_msg", {body: chatInput.value})
+      chatInput.value = ""
+    }
+  })
+
+channel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
+
+export default socket
